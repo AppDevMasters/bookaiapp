@@ -1,10 +1,19 @@
 {
-  "applinks": {
-    "details": [
-      {
-        "appID": "2GCNV9PWWJ.com.appdevmasters.BookAI",
-        "paths": [ "/shared/*" ]
-      }
-    ]
-  }
-}
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "2GCNV9PWWJ.com.appdevmasters.BookAI"
+                ],
+                "components": [
+                    {
+                        "/": "/shared/*",
+                        "comment": "Matches all URLs under /shared/ for book sharing"
+                    }
+                ]
+            }
+        ]
+    }
+} 
+
+
