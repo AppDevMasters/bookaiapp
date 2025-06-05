@@ -1,0 +1,13 @@
+# GitHub Pages configuration for universal links
+include: [".well-known"]
+
+# Disable Jekyll processing for certain files
+plugins: []
+
+# Ensure proper MIME types
+defaults:
+  - scope:
+      path: ".well-known/apple-app-site-association"
+    values:
+      layout: none
+      content_type: "application/json" 
