@@ -1,0 +1,11 @@
+# Set correct MIME type for Apple App Site Association file
+<Files "apple-app-site-association">
+    ForceType application/json
+    Header set Content-Type "application/json; charset=utf-8"
+</Files>
+
+# Ensure .well-known directory is accessible
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.well-known/ - [L]
+</IfModule> 
