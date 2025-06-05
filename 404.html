@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookAI App - Shared Content</title>
+    <title>BookAI App - Content Not Found</title>
     <meta name="apple-itunes-app" content="app-id=YOUR_APP_STORE_ID">
     <style>
         body {
@@ -58,52 +58,75 @@
             text-decoration: none;
             display: inline-block;
             transition: background 0.3s;
+            margin: 0.5rem;
         }
         .download-btn:hover {
             background: #0056CC;
         }
-        .fallback-content {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #eee;
-        }
-        .fallback-content h2 {
+        .secondary-btn {
+            background: #f0f0f0;
             color: #333;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+        }
+        .secondary-btn:hover {
+            background: #e0e0e0;
+        }
+        .url-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #666;
+            word-break: break-all;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="app-icon">📚</div>
-        <h1>BookAI App</h1>
-        <p>This content is best viewed in the BookAI app. Download it to get the full experience!</p>
+        <h1>BookAI App Required</h1>
+        <p>This content is designed for the BookAI mobile app.</p>
+        
+        <div class="url-info" id="url-info">
+            <!-- URL will be displayed here -->
+        </div>
         
         <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
-            Download from App Store
+            Download BookAI App
         </a>
         
-        <div class="fallback-content">
-            <h2>Shared Content</h2>
-            <p>You're viewing shared content from BookAI. This appears to be a book or content that was shared with you.</p>
-            <p>Install the BookAI app to view this content with full features including:</p>
-            <ul style="text-align: left; color: #666;">
-                <li>Interactive reading experience</li>
-                <li>Offline access</li>
-                <li>Personal library</li>
-                <li>AI-powered recommendations</li>
-            </ul>
-        </div>
+        <a href="/" class="download-btn secondary-btn">
+            Go to Website
+        </a>
+        
+        <p style="font-size: 0.9rem; margin-top: 2rem;">
+            If you have the BookAI app installed, try opening this link again or contact support if the issue persists.
+        </p>
     </div>
     
     <script>
-        // Auto-redirect to App Store after a delay if user doesn't interact
-        setTimeout(() => {
-            if (confirm("Would you like to download the BookAI app to view this content?")) {
-                window.location.href = "https://apps.apple.com/app/YOUR_APP_ID";
-            }
-        }, 3000);
+        // Display the current URL that was attempted
+        document.getElementById('url-info').textContent = 'Attempted URL: ' + window.location.href;
+        
+        // Check if this looks like a shared content URL
+        const path = window.location.pathname;
+        if (path.includes('/shared/')) {
+            document.querySelector('h1').textContent = 'Shared Content';
+            document.querySelector('.container p').textContent = 'This shared content requires the BookAI app to view properly.';
+        }
+        
+        // Auto-redirect logic for mobile users
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Show a prompt after a few seconds
+            setTimeout(() => {
+                if (confirm("This content requires the BookAI app. Would you like to download it now?")) {
+                    window.location.href = "https://apps.apple.com/app/YOUR_APP_ID";
+                }
+            }, 2000);
+        }
     </script>
 </body>
-</html>
+</html> 
