@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "YOUR_TEAM_ID.com.yourcompany.BookAI"
+        ],
+        "components": [
+          {
+            "/": "/*",
+            "comment": "Matches any shared link"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/shared/:book", "destination": "/shared/index.html" },
+    { "source": "/", "destination": "/index.html" }
+  ]
+}
