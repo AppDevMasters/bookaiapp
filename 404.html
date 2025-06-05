@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookAI App - Content Not Found</title>
+    <title>BookAI - Access Required</title>
     <meta name="apple-itunes-app" content="app-id=YOUR_APP_STORE_ID">
     <style>
         body {
@@ -20,55 +20,62 @@
         .container {
             background: white;
             padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             margin: 1rem;
         }
         .app-icon {
-            width: 80px;
-            height: 80px;
-            background: #4a90e2;
-            border-radius: 18px;
-            margin: 0 auto 1rem;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            border-radius: 22px;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: white;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
         }
         h1 {
             color: #333;
             margin-bottom: 0.5rem;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
         }
-        p {
+        .subtitle {
             color: #666;
             margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
         .download-btn {
-            background: #007AFF;
+            background: linear-gradient(135deg, #007AFF, #0056CC);
             color: white;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: background 0.3s;
+            transition: all 0.3s;
             margin: 0.5rem;
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
         }
         .download-btn:hover {
-            background: #0056CC;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
         }
         .secondary-btn {
             background: #f0f0f0;
             color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .secondary-btn:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
         .url-info {
             background: #f8f9fa;
@@ -79,54 +86,138 @@
             font-size: 0.9rem;
             color: #666;
             word-break: break-all;
+            border-left: 4px solid #dee2e6;
+        }
+        .auth-notice {
+            background: #fff3e0;
+            border: 1px solid #ffb74d;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        .auth-notice .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        .auth-notice p {
+            margin: 0.5rem 0;
+            color: #424242;
+        }
+        .steps {
+            text-align: left;
+            margin: 1.5rem 0;
+            color: #666;
+        }
+        .steps h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="app-icon">📚</div>
-        <h1>BookAI App Required</h1>
-        <p>This content is designed for the BookAI mobile app.</p>
+        <h1 id="page-title">App Access Required</h1>
+        <p class="subtitle" id="page-subtitle">This content requires the BookAI mobile app to access.</p>
         
         <div class="url-info" id="url-info">
             <!-- URL will be displayed here -->
         </div>
         
+        <div class="auth-notice" id="auth-notice" style="display: none;">
+            <span class="icon">🔐</span>
+            <p><strong>Shared Content Detected:</strong></p>
+            <p>This appears to be a shared book. You'll need to:</p>
+            <div class="steps">
+                <ol>
+                    <li>Download the BookAI app</li>
+                    <li>Sign in or create a free account</li>
+                    <li>The shared book will be added to your library</li>
+                </ol>
+            </div>
+        </div>
+        
         <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
-            Download BookAI App
+            📱 Download BookAI App
         </a>
         
         <a href="/" class="download-btn secondary-btn">
-            Go to Website
+            🏠 Go to Homepage
         </a>
         
-        <p style="font-size: 0.9rem; margin-top: 2rem;">
-            If you have the BookAI app installed, try opening this link again or contact support if the issue persists.
+        <p style="font-size: 0.9rem; margin-top: 2rem; color: #888;">
+            If you have the BookAI app installed, try opening this link again. 
+            <br>Need help? <a href="mailto:support@bookaiapp.com" style="color: #007AFF;">Contact Support</a>
         </p>
     </div>
     
     <script>
         // Display the current URL that was attempted
-        document.getElementById('url-info').textContent = 'Attempted URL: ' + window.location.href;
+        const currentUrl = window.location.href;
+        document.getElementById('url-info').textContent = 'Attempted URL: ' + currentUrl;
+        
+        // Extract path and shareId for analytics
+        const path = window.location.pathname;
+        const pathParts = path.split('/');
+        let shareId = null;
         
         // Check if this looks like a shared content URL
-        const path = window.location.pathname;
         if (path.includes('/shared/')) {
-            document.querySelector('h1').textContent = 'Shared Content';
-            document.querySelector('.container p').textContent = 'This shared content requires the BookAI app to view properly.';
+            // Extract shareId
+            const sharedIndex = pathParts.indexOf('shared');
+            if (sharedIndex !== -1 && sharedIndex + 1 < pathParts.length) {
+                shareId = pathParts[sharedIndex + 1];
+            }
+            
+            // Update UI for shared content
+            document.getElementById('page-title').textContent = 'Shared Book Access';
+            document.getElementById('page-subtitle').textContent = 'Someone shared a book with you!';
+            document.getElementById('auth-notice').style.display = 'block';
+            
+            console.log('Shared content 404:', shareId);
+        }
+        
+        // Analytics tracking
+        if (shareId) {
+            console.log('Share 404 accessed:', shareId);
+            // Add your analytics here
+            // gtag('event', 'share_404', { share_id: shareId });
         }
         
         // Auto-redirect logic for mobile users
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
         if (isMobile) {
-            // Show a prompt after a few seconds
+            const message = shareId ? 
+                "This shared book requires the BookAI app. Download it now?" :
+                "This content requires the BookAI app. Download it now?";
+            
             setTimeout(() => {
-                if (confirm("This content requires the BookAI app. Would you like to download it now?")) {
+                if (confirm(message)) {
+                    console.log('User chose to download from 404:', shareId || 'unknown');
                     window.location.href = "https://apps.apple.com/app/YOUR_APP_ID";
                 }
-            }, 2000);
+            }, 3000);
         }
+        
+        // Add click tracking to download buttons
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Download button clicked from 404:', shareId || 'unknown');
+                // gtag('event', 'download_click', { source: '404', share_id: shareId });
+            });
+        });
     </script>
 </body>
 </html> 
