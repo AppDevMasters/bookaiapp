@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "2GCNV9PWWJ.com.appdevmasters.BookAI",
+        "paths": [ "/shared/*" ]
+      }
+    ]
+  }
+}
