@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookAI - AI-Generated Books</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            border-radius: 18px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(107, 115, 255, 0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .shared-book {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #6B73FF;
+        }
+        
+        .shared-book h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .shared-book p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .download-button {
+            background: linear-gradient(135deg, #6B73FF, #000DFF);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(107, 115, 255, 0.3);
+        }
+        
+        .alternative-link {
+            color: #6B73FF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .alternative-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            color: #999;
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-icon">📚</div>
+        <h1>BookAI</h1>
+        <p class="subtitle">AI-Generated Books</p>
+        
+        <div class="shared-book" id="book-info">
+            <h2 id="book-title">Shared Book</h2>
+            <p id="book-description">Someone shared an AI-generated book with you!</p>
+        </div>
+        
+        <a href="#" class="download-button" id="download-link">
+            📱 Get BookAI App
+        </a>
+        
+        <br>
+        
+        <a href="#" class="alternative-link" id="web-reader-link">
+            Read in browser instead
+        </a>
+        
+        <div class="footer">
+            <p>© 2024 BookAI - Create and share AI-generated books</p>
+        </div>
+    </div>
+    
+    <script>
+        // Extract book ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const pathParts = window.location.pathname.split('/');
+        const bookId = pathParts[pathParts.indexOf('shared') + 1] || urlParams.get('book');
+        
+        // Update UI based on book ID
+        if (bookId) {
+            document.getElementById('book-title').textContent = `Book ID: ${bookId}`;
+            document.getElementById('book-description').textContent = 'Tap "Get BookAI App" to download the app and read this shared book.';
+        }
+        
+        // Detect iOS and set appropriate App Store link
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isAndroid = /Android/.test(navigator.userAgent);
+        
+        const downloadButton = document.getElementById('download-link');
+        
+        if (isIOS) {
+            // Replace with your actual App Store URL when published
+            downloadButton.href = 'https://apps.apple.com/app/bookai/id123456789';
+            downloadButton.innerHTML = '📱 Download on App Store';
+        } else if (isAndroid) {
+            // Replace with your actual Google Play URL when published
+            downloadButton.href = 'https://play.google.com/store/apps/details?id=com.bookaiapp';
+            downloadButton.innerHTML = '📱 Get it on Google Play';
+        } else {
+            downloadButton.href = '#';
+            downloadButton.innerHTML = '📱 Get BookAI App';
+            downloadButton.onclick = function() {
+                alert('BookAI is available on iOS App Store and Google Play Store. Please visit from a mobile device.');
+                return false;
+            };
+        }
+        
+        // Web reader fallback (you could implement a simple web reader)
+        document.getElementById('web-reader-link').onclick = function() {
+            if (bookId) {
+                // You could redirect to a web-based reader
+                alert('Web reader coming soon! Please download the app for the best reading experience.');
+            } else {
+                alert('No book specified to read.');
+            }
+            return false;
+        };
+        
+        // Try to open the app if on mobile
+        if (isIOS || isAndroid) {
+            // Add a small delay to let the page load
+            setTimeout(() => {
+                // Try to open the app with the Universal Link
+                if (bookId) {
+                    const appURL = `bookaiapp://shared/${bookId}`;
+                    window.location.href = appURL;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
