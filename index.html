@@ -75,23 +75,14 @@
             flex-wrap: wrap;
             margin-top: 2rem;
         }
-        .download-btn {
-            background: #4a90e2;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
+        .app-store-btn {
             display: inline-block;
+            text-decoration: none;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
-        .download-btn:hover {
-            background: #357abd;
+        .app-store-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+            opacity: 0.9;
         }
         main {
             padding: 2rem 1rem;
@@ -223,11 +214,8 @@
             <p class="subtitle">Create, read, and listen to AI-generated books</p>
             
             <div class="download-buttons">
-                <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
-                    📱 Download for iOS
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.appdevmasters.BookAI" class="download-btn">
-                    📱 Get it on Android
+                <a href="https://apps.apple.com/app/YOUR_APP_ID" class="app-store-btn">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 40px;">
                 </a>
             </div>
         </div>
@@ -253,8 +241,8 @@
         </div>
 
         <div class="coming-soon">
-            <h3>Web Experience Coming Soon</h3>
-            <p>We're working on a full web version of BookAI. For now, download our mobile app to get the complete experience!</p>
+            <h3>Available on iOS</h3>
+            <p>BookAI is currently available on iOS. Download from the App Store to access all features including AI-powered book creation, audio narration, and seamless cloud sync.</p>
         </div>
     </main>
 
