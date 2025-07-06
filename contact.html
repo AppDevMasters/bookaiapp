@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - BookAI App</title>
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_STORE_ID">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 14px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        main {
+            padding: 2rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-top: -1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .contact-method {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        .contact-method:hover {
+            border-color: #4a90e2;
+            transform: translateY(-2px);
+        }
+        .contact-method .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .contact-method h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .contact-method p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .contact-method a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+        .section h3 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4a90e2;
+        }
+        .faq-item h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            color: #666;
+            margin: 0;
+        }
+        .company-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        .company-info h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .company-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .response-time {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #2196f3;
+        }
+        .response-time h4 {
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+        .response-time p {
+            color: #1565c0;
+            margin: 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: white;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            main {
+                margin: 0 0.5rem;
+                padding: 1.5rem;
+            }
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            .section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="app-icon">📚</div>
+        <h1>Contact Support</h1>
+        <p class="subtitle">We're here to help you with BookAI</p>
+        <a href="/" class="back-link">← Back to Home</a>
+    </header>
+
+    <main>
+        <div class="section">
+            <p>Need help with BookAI? Our support team is ready to assist you. Choose the best way to reach us based on your needs.</p>
+        </div>
+
+        <div class="contact-methods">
+            <div class="contact-method">
+                <div class="icon">📧</div>
+                <h3>Email Support</h3>
+                <p>For general inquiries, technical issues, or feedback</p>
+                <a href="mailto:info@appdevmasters.com">info@appdevmasters.com</a>
+            </div>
+
+            <div class="contact-method">
+                <div class="icon">🐛</div>
+                <h3>Bug Reports</h3>
+                <p>Found a bug or experiencing crashes? Let us know!</p>
+                <a href="mailto:info@appdevmasters.com?subject=Bug Report - BookAI App">Report a Bug</a>
+            </div>
+
+            <div class="contact-method">
+                <div class="icon">💡</div>
+                <h3>Feature Requests</h3>
+                <p>Have ideas for new features or improvements?</p>
+                <a href="mailto:info@appdevmasters.com?subject=Feature Request - BookAI App">Suggest a Feature</a>
+            </div>
+        </div>
+
+        <div class="response-time">
+            <h4>⏱️ Response Time</h4>
+            <p>We typically respond to emails within 24-48 hours during business days.</p>
+        </div>
+
+        <div class="section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How do I create my first book?</h4>
+                <p>Open the BookAI app, tap the "+" button, enter your book idea or prompt, and let our AI generate your personalized book. You can customize the genre, length, and style to match your preferences.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I listen to my books as audiobooks?</h4>
+                <p>Yes! BookAI automatically generates audio narrations for your books using advanced text-to-speech technology. You can listen to your books directly in the app.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I share my books with others?</h4>
+                <p>Use the share button in your book library to generate a universal link. Recipients can view your book in the BookAI app or on the web, even if they don't have the app installed.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is my data safe and private?</h4>
+                <p>Absolutely. We use industry-standard encryption and secure cloud storage. Your books and personal information are private and associated only with your account. Read our <a href="/privacy">Privacy Policy</a> for details.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I edit or modify generated books?</h4>
+                <p>Currently, books are generated as complete works. However, you can create new books with different prompts and parameters. We're working on editing features for future updates.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What devices and operating systems are supported?</h4>
+                <p>BookAI is available for iOS devices running iOS 15.0 or later. Android support is coming soon. The app works on iPhone, iPad, and iPod touch.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Before You Contact Us</h2>
+            <p>To help us assist you more effectively, please include the following information in your email:</p>
+            <ul>
+                <li><strong>Device information:</strong> iPhone/iPad model and iOS version</li>
+                <li><strong>App version:</strong> Found in Settings > About</li>
+                <li><strong>Issue description:</strong> What happened and what you expected</li>
+                <li><strong>Steps to reproduce:</strong> How can we recreate the issue?</li>
+                <li><strong>Screenshots:</strong> If applicable, include relevant screenshots</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Alternative Support Options</h2>
+            
+            <h3>App Store Reviews</h3>
+            <p>While we appreciate feedback through App Store reviews, we cannot respond to reviews directly. For technical support or specific issues, please email us for faster resolution.</p>
+
+            <h3>Social Media</h3>
+            <p>Follow us for updates and announcements, but for support issues, email is the most effective way to get help.</p>
+        </div>
+
+        <div class="company-info">
+            <h3>Company Information</h3>
+            <p><strong>Company:</strong> APP DEV MASTERS LTD</p>
+            <p><strong>Email:</strong> info@appdevmasters.com</p>
+            <p><strong>Product:</strong> BookAI - AI-powered book generation app</p>
+            <p><strong>Platforms:</strong> iOS (iPhone, iPad, iPod touch)</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 APP DEV MASTERS LTD - BookAI App</p>
+        <p>
+            <a href="mailto:info@appdevmasters.com">Contact</a> | 
+            <a href="/privacy">Privacy Policy</a> | 
+            <a href="/">Home</a>
+        </p>
+    </footer>
+</body>
+</html> 
