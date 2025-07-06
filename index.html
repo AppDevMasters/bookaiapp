@@ -11,34 +11,62 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
+            color: #333;
         }
         header {
-            background: linear-gradient(135deg, #4a90e2, #357abd);
-            color: white;
-            padding: 3rem 1rem;
+            background: white;
+            color: #333;
+            padding: 2rem 1rem;
             text-align: center;
+            border-bottom: 1px solid #e9ecef;
         }
-        .app-icon {
+        .welcome-card {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .logo {
             width: 80px;
             height: 80px;
-            background: rgba(255,255,255,0.2);
+            margin: 0 auto 1rem;
+            display: block;
+            border-radius: 18px;
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
             border-radius: 18px;
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
+            color: white;
         }
         h1 {
             margin: 0 0 0.5rem 0;
             font-size: 2.5rem;
             font-weight: 700;
+            color: #333;
         }
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            color: #666;
             margin-bottom: 2rem;
+        }
+        .sparkle {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            color: #4a90e2;
         }
         .download-buttons {
             display: flex;
@@ -48,46 +76,98 @@
             margin-top: 2rem;
         }
         .download-btn {
-            background: rgba(255,255,255,0.2);
+            background: #4a90e2;
             color: white;
             padding: 12px 24px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
+            border: none;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
         .download-btn:hover {
-            background: rgba(255,255,255,0.3);
-            border-color: rgba(255,255,255,0.5);
+            background: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
         }
         main {
-            padding: 3rem 1rem;
+            padding: 2rem 1rem;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
         .feature {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 600;
+        }
+        .feature-icon.read {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+        .feature-icon.listen {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+        .feature-icon.generate {
+            background: linear-gradient(135deg, #E91E63, #9C27B0);
         }
         .feature h3 {
             color: #333;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
         .feature p {
+            color: #666;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .coming-soon {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 1rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #e9ecef;
+        }
+        .coming-soon h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .coming-soon p {
             color: #666;
             margin: 0;
         }
@@ -96,6 +176,7 @@
             color: white;
             padding: 2rem 1rem;
             text-align: center;
+            margin-top: 3rem;
         }
         .app-banner {
             background: #007AFF;
@@ -120,6 +201,11 @@
             }
             .features {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .welcome-card {
+                margin: 1rem;
+                padding: 1.5rem;
             }
         }
     </style>
@@ -130,41 +216,46 @@
     </div>
 
     <header>
-        <div class="app-icon">📚</div>
-        <h1>BookAI App</h1>
-        <p class="subtitle">Smart tools for readers and writers</p>
-        
-        <div class="download-buttons">
-            <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
-                📱 Download for iOS
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.appdevmasters.BookAI" class="download-btn">
-                📱 Get it on Android
-            </a>
+        <div class="welcome-card">
+            <img src="BookAiLogo.png" alt="BookAI Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="logo-placeholder" style="display: none;">📚</div>
+            <h1>Welcome<br>to BookAI <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Create, read, and listen to AI-generated books</p>
+            
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
+                    📱 Download for iOS
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.appdevmasters.BookAI" class="download-btn">
+                    📱 Get it on Android
+                </a>
+            </div>
         </div>
     </header>
 
     <main>
-        <h2>Available Now on Mobile</h2>
-        <p>BookAI is currently available as a mobile app. Download it to access all features including AI-powered book creation, reading recommendations, and content sharing.</p>
-        
         <div class="features">
             <div class="feature">
-                <h3>📖 AI-Generated Books</h3>
-                <p>Create personalized books using artificial intelligence. Perfect for custom stories, educational content, and creative writing.</p>
+                <div class="feature-icon read">📖</div>
+                <h3>Read Your Books</h3>
+                <p>Browse your library of AI-generated books. Access your personalized collection anytime, anywhere.</p>
             </div>
             <div class="feature">
-                <h3>🔗 Smart Sharing</h3>
-                <p>Share your creations with others through universal links. Recipients can view content in the app or on the web.</p>
+                <div class="feature-icon listen">🎧</div>
+                <h3>Listen to Books</h3>
+                <p>Convert books to audio format. Enjoy your stories with high-quality text-to-speech narration.</p>
             </div>
             <div class="feature">
-                <h3>☁️ Cloud Sync</h3>
-                <p>Your library syncs across all your devices. Start reading on one device and continue on another seamlessly.</p>
+                <div class="feature-icon generate">🪄</div>
+                <h3>Generate Books</h3>
+                <p>Create AI-powered stories & share them free. Turn your ideas into complete books with just a prompt.</p>
             </div>
         </div>
 
-        <h3>Web Experience Coming Soon</h3>
-        <p>We're working on a full web version of BookAI. For now, download our mobile app to get the complete experience!</p>
+        <div class="coming-soon">
+            <h3>Web Experience Coming Soon</h3>
+            <p>We're working on a full web version of BookAI. For now, download our mobile app to get the complete experience!</p>
+        </div>
     </main>
 
     <footer>
