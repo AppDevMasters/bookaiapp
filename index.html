@@ -90,11 +90,22 @@
             max-width: 800px;
             margin: 0 auto;
         }
+        .main-feature {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .main-feature .feature.featured {
+            max-width: 350px;
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border: 2px solid #E91E63;
+        }
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
         .feature {
             background: white;
@@ -190,6 +201,11 @@
             .subtitle {
                 font-size: 1rem;
             }
+            .main-feature .feature.featured {
+                transform: scale(1.0);
+                max-width: 100%;
+                margin: 0 1rem;
+            }
             .features {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -222,6 +238,14 @@
     </header>
 
     <main>
+        <div class="main-feature">
+            <div class="feature featured">
+                <div class="feature-icon generate">🪄</div>
+                <h3>Generate Books</h3>
+                <p>Create AI-powered stories & share them free. Turn your ideas into complete books with just a prompt.</p>
+            </div>
+        </div>
+        
         <div class="features">
             <div class="feature">
                 <div class="feature-icon read">📖</div>
@@ -232,11 +256,6 @@
                 <div class="feature-icon listen">🎧</div>
                 <h3>Listen to Books</h3>
                 <p>Convert books to audio format. Enjoy your stories with high-quality text-to-speech narration.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon generate">🪄</div>
-                <h3>Generate Books</h3>
-                <p>Create AI-powered stories & share them free. Turn your ideas into complete books with just a prompt.</p>
             </div>
         </div>
 
