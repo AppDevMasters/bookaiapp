@@ -4,72 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookAI - Shared Book</title>
-    <meta name="apple-itunes-app" content="app-id=YOUR_APP_STORE_ID">
+    <meta name="apple-itunes-app" content="app-id=6745890103">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background: white;
+            color: #333;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: block;
+            border-radius: 18px;
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            border-radius: 18px;
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 2rem;
+            color: white;
         }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .sparkle {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            color: #4a90e2;
+        }
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .app-store-btn {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        main {
+            padding: 2rem 1rem;
             text-align: center;
-            max-width: 420px;
-            margin: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #4a90e2, #357abd);
-            border-radius: 22px;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 0.5rem;
             font-size: 1.8rem;
-            font-weight: 700;
+            color: white;
+            font-weight: 600;
         }
-        .subtitle {
+        .feature-icon.share {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+        .feature-icon.access {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+        .feature-icon.sync {
+            background: linear-gradient(135deg, #E91E63, #9C27B0);
+        }
+        .feature h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .feature p {
             color: #666;
-            margin-bottom: 1.5rem;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .share-info {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 4px solid #2196f3;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .share-info h4 {
+            color: #1976d2;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .share-info p {
+            color: #424242;
+            margin: 0;
             font-size: 1rem;
         }
-        .feature-list {
-            text-align: left;
-            background: #f8f9fa;
+        .auth-requirement {
+            background: #fff3e0;
+            border: 1px solid #ffb74d;
             border-radius: 12px;
             padding: 1.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
-        .feature-list h3 {
+        .auth-requirement .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        .steps {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+        .steps h3 {
             color: #333;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
             text-align: center;
         }
-        .feature-list ul {
-            margin: 0;
+        .steps ol {
             padding-left: 1.2rem;
             color: #666;
+            text-align: left;
         }
-        .feature-list li {
-            margin-bottom: 0.5rem;
+        .steps li {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
         }
         .download-btn {
             background: linear-gradient(135deg, #007AFF, #0056CC);
@@ -98,63 +223,70 @@
             background: #e0e0e0;
             transform: translateY(-2px);
         }
-        .share-info {
-            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-            border-left: 4px solid #2196f3;
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .app-banner {
+            background: #007AFF;
+            color: white;
             padding: 1rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            text-align: left;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .share-info h4 {
-            color: #1976d2;
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
+        .app-banner a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
         }
-        .share-info p {
-            color: #424242;
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        .auth-requirement {
-            background: #fff3e0;
-            border: 1px solid #ffb74d;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1.5rem 0;
-        }
-        .auth-requirement .icon {
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-        }
-        .steps {
-            text-align: left;
-            margin: 1.5rem 0;
-        }
-        .steps ol {
-            padding-left: 1.2rem;
-            color: #666;
-        }
-        .steps li {
-            margin-bottom: 0.5rem;
-        }
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem;
-                margin: 0.5rem;
-            }
+        @media (max-width: 768px) {
             h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .welcome-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .steps {
+                padding: 1.5rem;
+                margin: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="app-icon">📚</div>
-        <h1>Shared Book</h1>
-        <p class="subtitle">Someone shared a book with you on BookAI!</p>
-        
+    <div class="app-banner" id="app-banner" style="display: none;">
+        📱 <a href="https://apps.apple.com/app/6745890103">Open in BookAI App</a> or <span onclick="closeBanner()" style="cursor: pointer; text-decoration: underline;">continue on web</span>
+    </div>
+
+    <header>
+        <div class="welcome-card">
+            <img src="../BookAiLogo.png" alt="BookAI Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="logo-placeholder" style="display: none;">📚</div>
+            <h1>Shared Book <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Someone shared a book with you on BookAI!</p>
+            
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/app/6745890103" class="app-store-btn">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
         <div class="share-info">
             <h4>🎁 You've received a book share</h4>
             <p>To access this shared book, you'll need the BookAI app with a free account.</p>
@@ -175,27 +307,56 @@
             </ol>
         </div>
         
-        <a href="https://apps.apple.com/app/YOUR_APP_ID" class="download-btn">
-            📱 Download BookAI App
-        </a>
-        
-        <a href="/" class="download-btn secondary-btn">
-            🌐 Learn More
-        </a>
-        
-        <div class="feature-list">
-            <h3>What you'll get with BookAI:</h3>
-            <ul>
-                <li>📖 Full access to shared books in your library</li>
-                <li>🔖 Bookmarks and highlights sync across devices</li>
-                <li>📱 Read on iPhone, iPad, and more</li>
-                <li>🤝 Share your own books with friends</li>
-                <li>🎯 AI-powered reading recommendations</li>
-            </ul>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon share">📖</div>
+                <h3>Full Access</h3>
+                <p>Complete access to shared books in your personal library with all reading features.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon access">🔖</div>
+                <h3>Sync & Save</h3>
+                <p>Bookmarks and highlights sync across all your devices automatically.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon sync">📱</div>
+                <h3>Multi-Device</h3>
+                <p>Read on iPhone, iPad, and more. Your progress follows you everywhere.</p>
+            </div>
         </div>
-    </div>
+        
+        <div style="margin: 2rem 0;">
+            <a href="https://apps.apple.com/app/6745890103" class="download-btn">
+                📱 Download BookAI App
+            </a>
+            
+            <a href="/" class="download-btn secondary-btn">
+                🌐 Learn More
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BookAI App - Smart tools for readers and writers</p>
+        <p>
+            <a href="/contact" style="color: #ccc;">Contact Support</a> | 
+            <a href="/privacy" style="color: #ccc;">Privacy Policy</a> | 
+            <a href="/terms" style="color: #ccc;">Terms of Use</a>
+        </p>
+    </footer>
     
     <script>
+        // Show app banner on mobile devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            document.getElementById('app-banner').style.display = 'block';
+        }
+
+        function closeBanner() {
+            document.getElementById('app-banner').style.display = 'none';
+        }
+
         // Extract shareId from URL for analytics
         const shareId = window.location.pathname.split('/').pop();
         
@@ -207,15 +368,13 @@
         }
         
         // Auto-redirect logic for mobile users
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
         if (isMobile) {
             // Show download prompt after user has time to read
             setTimeout(() => {
                 if (confirm("Ready to download BookAI and access your shared book?")) {
                     // Track conversion
                     console.log('User chose to download from share:', shareId);
-                    window.location.href = "https://apps.apple.com/app/YOUR_APP_ID";
+                    window.location.href = "https://apps.apple.com/app/6745890103";
                 }
             }, 5000);
         }
@@ -227,6 +386,20 @@
                 // gtag('event', 'download_click', { source: 'share', share_id: shareId });
             });
         });
+
+        // Handle universal link fallback
+        const path = window.location.pathname;
+        if (path !== '/shared' && path !== '/shared/') {
+            // This might be a universal link fallback
+            console.log('Potential universal link fallback:', path);
+            
+            // Show a more prominent app download suggestion
+            setTimeout(() => {
+                if (isMobile && confirm('This content is available in the BookAI app. Would you like to download it?')) {
+                    window.location.href = 'https://apps.apple.com/app/6745890103';
+                }
+            }, 1000);
+        }
     </script>
 </body>
 </html>
