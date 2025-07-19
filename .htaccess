@@ -8,4 +8,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^\.well-known/ - [L]
+    
+    # Route all /shared/* URLs to the shared page
+    RewriteRule ^shared/(.*)$ website/shared/index.html [L]
 </IfModule> 
