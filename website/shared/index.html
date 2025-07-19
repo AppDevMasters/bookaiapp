@@ -1,50 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BookAI Shared Book</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .card {
-      max-width: 500px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 20px;
-      background: #4a90e2;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 24px;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookAI - Shared Book</title>
+    <meta name="apple-itunes-app" content="app-id=6745890103">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background: white;
+            color: #333;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 1rem;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: block;
+            border-radius: 18px;
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            border-radius: 18px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .sparkle {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            color: #4a90e2;
+        }
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .app-store-btn {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        main {
+            padding: 2rem 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .share-info {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 4px solid #2196f3;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .share-info h4 {
+            color: #1976d2;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .share-info p {
+            color: #424242;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .auth-requirement {
+            background: #fff3e0;
+            border: 1px solid #ffb74d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .auth-requirement .icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        .steps {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+        .steps h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .steps ol {
+            padding-left: 1.2rem;
+            color: #666;
+            text-align: left;
+        }
+        .steps li {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #007AFF, #0056CC);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .app-banner {
+            background: #007AFF;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .app-banner a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .welcome-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .steps {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Open in BookAI</h1>
-    <p>If the app doesn't open automatically, tap below to download.</p>
-    <a href="#" class="button" id="download">Get the App</a>
-  </div>
-  <script>
-    const path = window.location.pathname.split('/');
-    const id = path[path.indexOf('shared') + 1];
-    if(id) {
-      setTimeout(() => {
-        window.location.href = `bookaiapp://shared/${id}`;
-      }, 500);
-    }
-  </script>
+    <div class="app-banner" id="app-banner" style="display: none;">
+        📱 <a href="https://apps.apple.com/app/6745890103">Open in BookAI App</a> or <span onclick="closeBanner()" style="cursor: pointer; text-decoration: underline;">continue on web</span>
+    </div>
+
+    <header>
+        <div class="welcome-card">
+            <img src="../../BookAiLogo.png" alt="BookAI Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="console.log('Logo loaded successfully');">
+            <div class="logo-placeholder" style="display: none;">📚</div>
+            <h1>Shared Book <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Someone shared a book with you on BookAI!</p>
+            
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/app/6745890103" class="app-store-btn">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 40px;">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="share-info">
+            <h4>🎁 You've received a book share</h4>
+            <p>To access this shared book, you'll need the BookAI app with a free account.</p>
+        </div>
+        
+        <div class="auth-requirement">
+            <span class="icon">🔐</span>
+            <strong>Sign-in Required:</strong> Shared books require authentication for security and to add them to your personal library.
+        </div>
+        
+        <div class="steps">
+            <h3>How to access your shared book:</h3>
+            <ol>
+                <li>Download the BookAI app</li>
+                <li>Create a free account or sign in</li>
+                <li>The shared book will be added to your library</li>
+                <li>Enjoy reading with full features!</li>
+            </ol>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+            <a href="https://apps.apple.com/app/6745890103" class="download-btn">
+                📱 Download BookAI App
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BookAI App - Smart tools for readers and writers</p>
+        <p>
+            <a href="/contact" style="color: #ccc;">Contact Support</a> | 
+            <a href="/privacy" style="color: #ccc;">Privacy Policy</a> | 
+            <a href="/terms" style="color: #ccc;">Terms of Use</a>
+        </p>
+    </footer>
+    
+    <script>
+        // Debug logo loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            const placeholder = document.querySelector('.logo-placeholder');
+            
+            if (logo) {
+                logo.addEventListener('error', function() {
+                    console.log('Logo failed to load, showing placeholder');
+                    this.style.display = 'none';
+                    if (placeholder) placeholder.style.display = 'flex';
+                });
+                
+                logo.addEventListener('load', function() {
+                    console.log('Logo loaded successfully');
+                    if (placeholder) placeholder.style.display = 'none';
+                });
+            }
+        });
+        
+        // Show app banner on mobile devices
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            document.getElementById('app-banner').style.display = 'block';
+        }
+
+        function closeBanner() {
+            document.getElementById('app-banner').style.display = 'none';
+        }
+
+        // Extract shareId from URL for analytics
+        const path = window.location.pathname.split('/');
+        const shareId = path[path.indexOf('shared') + 1];
+        
+        // Analytics tracking
+        if (shareId && shareId !== 'shared') {
+            console.log('Share accessed:', shareId);
+            // You can add analytics tracking here
+            // gtag('event', 'share_page_view', { share_id: shareId });
+        }
+        
+        // Auto-redirect logic for mobile users
+        if (isMobile) {
+            // Show download prompt after user has time to read
+            setTimeout(() => {
+                if (confirm("Ready to download BookAI and access your shared book?")) {
+                    // Track conversion
+                    console.log('User chose to download from share:', shareId);
+                    window.location.href = "https://apps.apple.com/app/6745890103";
+                }
+            }, 5000);
+        }
+        
+        // Add click tracking to download buttons
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Download button clicked from share:', shareId);
+                // gtag('event', 'download_click', { source: 'share', share_id: shareId });
+            });
+        });
+
+        // Universal link handling - try to open in app first
+        if (shareId) {
+            setTimeout(() => {
+                window.location.href = `bookaiapp://shared/${shareId}`;
+            }, 500);
+        }
+
+        // Handle universal link fallback
+        const currentPath = window.location.pathname;
+        if (currentPath !== '/shared' && currentPath !== '/shared/') {
+            // This might be a universal link fallback
+            console.log('Potential universal link fallback:', currentPath);
+            
+            // Show a more prominent app download suggestion
+            setTimeout(() => {
+                if (isMobile && confirm('This content is available in the BookAI app. Would you like to download it?')) {
+                    window.location.href = 'https://apps.apple.com/app/6745890103';
+                }
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
