@@ -273,7 +273,7 @@
 
     <header>
         <div class="welcome-card">
-            <img src="../BookAiLogo.png" alt="BookAI Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="../BookAiLogo.png" alt="BookAI Logo" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="console.log('Logo loaded successfully');">
             <div class="logo-placeholder" style="display: none;">📚</div>
             <h1>Shared Book <span class="sparkle">✨</span></h1>
             <p class="subtitle">Someone shared a book with you on BookAI!</p>
@@ -347,6 +347,25 @@
     </footer>
     
     <script>
+        // Debug logo loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            const placeholder = document.querySelector('.logo-placeholder');
+            
+            if (logo) {
+                logo.addEventListener('error', function() {
+                    console.log('Logo failed to load, showing placeholder');
+                    this.style.display = 'none';
+                    if (placeholder) placeholder.style.display = 'flex';
+                });
+                
+                logo.addEventListener('load', function() {
+                    console.log('Logo loaded successfully');
+                    if (placeholder) placeholder.style.display = 'none';
+                });
+            }
+        });
+        
         // Show app banner on mobile devices
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
